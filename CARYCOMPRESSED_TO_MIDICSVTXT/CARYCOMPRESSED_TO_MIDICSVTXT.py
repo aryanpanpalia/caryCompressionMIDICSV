@@ -6,7 +6,6 @@ OUTPUT_FILE = "../3_reconstructed_midicsvtxt_files/reconstructed_text2_1.txt"
 OUTPUT_IMAGE = "../3_reconstructed_midicsvtxt_files/reconstructed_text2_1.png"
 
 pitchCount = 116
-# PrintWriter output;
 multi = 40
 
 data = open(INPUT_FILE).readlines()
