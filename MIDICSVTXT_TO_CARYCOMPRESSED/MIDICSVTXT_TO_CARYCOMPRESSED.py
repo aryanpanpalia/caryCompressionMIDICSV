@@ -7,13 +7,13 @@ OUTPUT_FOLDER = "../2_carycompressed_files"
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 pitchCount = 110
-notes = np.zeros((150000, pitchCount), dtype=int)
+
 filenames = os.listdir(fileFolder)
 currentInstrument = -1
 firstTrackWithNotes = -1
 quantizationSize = 40
 minimumPitch = 22
-allow = np.ones((128,), dtype=bool)
+
 banThisPieceOfMusic = False
 haveSetTempo = False
 
@@ -24,6 +24,9 @@ for fileIndex in range(len(filenames)):
     firstTrackWithNotes = -1
     thisFile = filenames[fileIndex]
 
+    notes = np.zeros((150000, pitchCount), dtype=int)
+    allow = np.ones((128,), dtype=bool)
+    
     print(f"Starting file {fileIndex} ({fileFolder}/{thisFile})")
 
     data = open(f"{fileFolder}/{thisFile}").readlines()
@@ -86,6 +89,7 @@ for fileIndex in range(len(filenames)):
     else:
         turnedOn = False
         for transposition in range(0, 6):
+            open(f"{OUTPUT_FOLDER}/text{fileIndex}_{transposition}.txt", 'w').close()
             output = open(f"{OUTPUT_FOLDER}/text{fileIndex}_{transposition}.txt", 'a')
             for x in range(0, min(150000, finalTime + 24)):
                 for y in range(24, pitchCount):
@@ -99,5 +103,8 @@ for fileIndex in range(len(filenames)):
                     output.write(" ")
                 if x % 50 == 49:
                     output.write("\n")
+
+            output.flush()
+            output.close()
 
     print(f"Done with file {fileIndex} ({fileFolder}/{thisFile})")
