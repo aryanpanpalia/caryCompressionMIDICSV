@@ -7,15 +7,9 @@ OUTPUT_FOLDER = "../2_carycompressed_files"
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 pitchCount = 110
-
 filenames = os.listdir(fileFolder)
-currentInstrument = -1
-firstTrackWithNotes = -1
 quantizationSize = 40
 minimumPitch = 22
-
-banThisPieceOfMusic = False
-haveSetTempo = False
 
 for fileIndex in range(len(filenames)):
     banThisPieceOfMusic = False
