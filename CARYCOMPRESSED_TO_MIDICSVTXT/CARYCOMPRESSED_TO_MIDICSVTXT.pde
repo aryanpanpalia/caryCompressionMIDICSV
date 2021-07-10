@@ -17,7 +17,7 @@ void setup(){
   for(int line = 0; line < data.length; line++){
     for(int ch = 0; ch < data[line].length(); ch++){
       char c = data[line].charAt(ch);
-      int pitch = (int)(c)-32-1;//+19;
+      int pitch = (int)(c)-32-1;
       if(c == ' '){
         pointerAt++;
       }else{
@@ -33,8 +33,8 @@ void setup(){
   int shift = 960;
   for(int i = 0; i < 1000; i++){
     for(int j = 0; j < 87; j++){
-      if(notes[i+shift][j]){
-        rect(i*2,(86-j)*10,2,10);
+      if(notes[i + shift][j]){
+        rect(i * 2, (86 - j) * 10, 2, 10);
       }
     }
   }
@@ -53,11 +53,11 @@ void setup(){
         output.println("2, "+(i*multi)+", Note_on_c, 1, "+(j+21)+", 127");
       }
       if(!notes[i][j] && i >= 1 && notes[i-1][j]){
-        output.println("2, "+(i*multi)+", Note_off_c, 1, "+(j+21)+", 0");
+        output.println("2, " + (i * multi) + ", Note_off_c, 1, " + (j + 21) + ", 0");
       }
     }
   }
-  output.println("2, "+(pointerAt*multi)+", End_track");
+  output.println("2, " + (pointerAt * multi) + ", End_track");
   output.println("3, 0, Start_track");
   output.println("3, 0, Title_t, \"MIDI\"");
   output.println("3, 1536, End_track");
